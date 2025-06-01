@@ -2,7 +2,7 @@
 
 resource "google_iam_workload_identity_pool" "github_pool" {
   provider                  = google
-  workload_identity_pool_id = "github-pool-5"
+  workload_identity_pool_id = "github-pool"
   display_name              = "GitHub Pool"
   description               = "Github Workload Identity Pool for LittleHorse BYOC"
 }

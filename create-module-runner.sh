@@ -1,16 +1,15 @@
 #!/bin/bash
-
 set -e
 
 if [ "$#" -ne 4 ]; then
-  echo "Uso: $0 <PROJECT_ID> <REPOSITORY_NAME> <ORGANIZATION_NAME> <BUCKET_LH_BYOC_TERRAFORM_STATE>"
-  exit 1
+ echo "Uso: $0 <REPOSITORY_NAME> <ORGANIZATION_NAME> <BUCKET_TERRAFORM_STATE> <BUCKET_TERRAFORM_STATE_LOCATION>"
+ exit 1
 fi
 
-PROJECT_ID="$1"
-REPOSITORY_NAME="$2"
-ORGANIZATION_NAME="$3"
-BUCKET_LH_BYOC_TERRAFORM_STATE="$4"
+REPOSITORY_NAME="$1"
+ORGANIZATION_NAME="$2"
+BUCKET_TERRAFORM_STATE="$3"
+BUCKET_TERRAFORM_STATE_LOCATION="$4"
 
 WORKDIR="tf-byoc-module"
 mkdir -p "$WORKDIR"
@@ -18,25 +17,31 @@ cd "$WORKDIR"
 
 cat > main.tf <<EOF
 module "setup-byouc" {
-  source  = "terraform-gcp-modules/byoc/gcp/setup"
-  version = "1.0.0"
+ source  = "littlehorse-cloud/byoc-setup/google"
+ version = "0.0.1"
 
-  project_id = "$PROJECT_ID"
-  repository_name = "$REPOSITORY_NAME"
-  organization_name = "$ORGANIZATION_NAME"
-  bucket_lh_byoc_terraform_state = "$BUCKET_LH_BYOC_TERRAFORM_STATE"
+ project_id = var.project_id
+ repository_name = "$REPOSITORY_NAME"
+ organization_name = "$ORGANIZATION_NAME"
+ bucket_terraform_state = "$BUCKET_TERRAFORM_STATE"
+ bucket_terraform_state_location = "$BUCKET_TERRAFORM_STATE_LOCATION"
+}
 
+variable "project_id" {
+ type = string
+ description = "The ID of the Google Cloud project."
 }
 EOF
 
 cat > run.sh <<EOF
 #!/bin/bash
 
-terraform init
+export TF_VAR_project_id=\$(gcloud config get-value project 2>/dev/null)
 
+terraform init
 terraform apply -auto-approve
 
-cho "Setup complete."
+echo "Setup complete."
 EOF
 
 chmod +x run.sh
