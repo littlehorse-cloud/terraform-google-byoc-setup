@@ -9,6 +9,7 @@ fi
 REPOSITORY_NAME="$1"
 ORGANIZATION_NAME="$2"
 BUCKET_TERRAFORM_STATE_LOCATION="$3"
+MODULE_VERSION="$(git describe --tags --abbrev=0| sed 's/^v//')"
 
 WORKDIR="tf-byoc-module"
 mkdir -p "$WORKDIR"
@@ -17,7 +18,7 @@ cd "$WORKDIR"
 cat > main.tf <<EOF
 module "setup-byouc" {
  source  = "littlehorse-cloud/byoc-setup/google"
- version = "0.0.1"
+ version = "$MODULE_VERSION"
 
  project_id = var.project_id
  repository_name = "$REPOSITORY_NAME"
