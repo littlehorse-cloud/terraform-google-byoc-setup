@@ -1440,7 +1440,6 @@ locals {
       "resourcemanager.projects.deletePolicyBinding",
       "resourcemanager.projects.get",
       "resourcemanager.projects.getIamPolicy",
-      "resourcemanager.projects.list",
       "resourcemanager.projects.searchPolicyBindings",
       "resourcemanager.projects.setIamPolicy",
       "resourcemanager.projects.updatePolicyBinding",
