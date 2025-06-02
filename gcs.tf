@@ -5,5 +5,4 @@ resource "google_storage_bucket" "terraform_state" {
   force_destroy = true
 
   public_access_prevention = "enforced"
-
 }

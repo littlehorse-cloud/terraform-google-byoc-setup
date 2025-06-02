@@ -1,10 +1,11 @@
-
+resource "random_id" "identity_pool_id" {
+  byte_length = 4
+}
 
 resource "google_iam_workload_identity_pool" "github_pool" {
-  provider                  = google
-  workload_identity_pool_id = "github-pool"
-  display_name              = "GitHub Pool"
-  description               = "Github Workload Identity Pool for LittleHorse BYOC"
+  workload_identity_pool_id = "littlehorse-pool-${random_id.identity_pool_id.hex}"
+  display_name              = "Littlehorse BYOC Pool"
+  description               = "Workload Identity Pool for LittleHorse BYOC"
 }
 
 resource "google_iam_workload_identity_pool_provider" "github_provider" {

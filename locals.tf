@@ -4,7 +4,6 @@ locals {
     "compute.googleapis.com",
     "container.googleapis.com",
     "dns.googleapis.com",
-    "iam.googleapis.com",
     "secretmanager.googleapis.com",
     "storage.googleapis.com"
   ])

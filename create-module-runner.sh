@@ -1,15 +1,14 @@
 #!/bin/bash
 set -e
 
-if [ "$#" -ne 4 ]; then
- echo "Uso: $0 <REPOSITORY_NAME> <ORGANIZATION_NAME> <BUCKET_TERRAFORM_STATE> <BUCKET_TERRAFORM_STATE_LOCATION>"
+if [ "$#" -ne 3 ]; then
+ echo "Use: $0 <REPOSITORY_NAME> <ORGANIZATION_NAME> <BUCKET_TERRAFORM_STATE_LOCATION>"
  exit 1
 fi
 
 REPOSITORY_NAME="$1"
 ORGANIZATION_NAME="$2"
-BUCKET_TERRAFORM_STATE="$3"
-BUCKET_TERRAFORM_STATE_LOCATION="$4"
+BUCKET_TERRAFORM_STATE_LOCATION="$3"
 
 WORKDIR="tf-byoc-module"
 mkdir -p "$WORKDIR"
@@ -23,13 +22,16 @@ module "setup-byouc" {
  project_id = var.project_id
  repository_name = "$REPOSITORY_NAME"
  organization_name = "$ORGANIZATION_NAME"
- bucket_terraform_state = "$BUCKET_TERRAFORM_STATE"
  bucket_terraform_state_location = "$BUCKET_TERRAFORM_STATE_LOCATION"
 }
 
 variable "project_id" {
  type = string
  description = "The ID of the Google Cloud project."
+}
+
+provider "google" {
+ project = var.project_id
 }
 EOF
 
