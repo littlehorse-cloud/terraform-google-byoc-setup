@@ -16,7 +16,7 @@ mkdir -p "$WORKDIR"
 cd "$WORKDIR"
 
 cat > main.tf <<EOF
-module "setup-byouc" {
+module "setup_byoc" {
  source  = "littlehorse-cloud/byoc-setup/google"
  version = "$MODULE_VERSION"
 
@@ -29,6 +29,11 @@ module "setup-byouc" {
 variable "project_id" {
  type = string
  description = "The ID of the Google Cloud project."
+}
+
+output "byoc_setup_details" {
+ value = module.setup_byoc.byoc_setup_details
+ description = "Details of the BYOC setup."
 }
 
 provider "google" {
