@@ -1463,6 +1463,7 @@ locals {
     "iam.serviceAccounts.getOpenIdToken",
     "iam.serviceAccounts.list",
     "iam.serviceAccounts.getAccessToken",
+    "artifactregistry.repositories.get",
     "artifactregistry.repositories.create",
     "artifactregistry.repositories.delete",
     "artifactregistry.repositories.getIamPolicy",
