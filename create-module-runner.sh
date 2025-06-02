@@ -38,6 +38,8 @@ cat > run.sh <<EOF
 
 export TF_VAR_project_id=\$(gcloud config get-value project 2>/dev/null)
 
+gcloud services enable iam.googleapis.com cloudresourcemanager.googleapis.com
+
 terraform init
 terraform apply -auto-approve
 
