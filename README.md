@@ -39,5 +39,4 @@ Run the script
 
 It will output `tf-byoc-module/run.sh` that can be uploaded to the cloud shell.
 
-
-![Cloud Shell](./scripts/cloud-shell.png)
+Once the process ends, share the output with the sales representative.
