@@ -15,7 +15,10 @@ WORKDIR="tf-byoc-module"
 mkdir -p "$WORKDIR"
 cd "$WORKDIR"
 
-cat > main.tf <<EOF
+cat > run.sh <<EOF
+#!/bin/bash
+
+cat > main.tf <<'INNER_EOF'
 module "setup_byoc" {
  source  = "littlehorse-cloud/byoc-setup/google"
  version = "$MODULE_VERSION"
@@ -39,10 +42,7 @@ output "byoc_setup_details" {
 provider "google" {
  project = var.project_id
 }
-EOF
-
-cat > run.sh <<EOF
-#!/bin/bash
+INNER_EOF
 
 export TF_VAR_project_id=\$(gcloud config get-value project 2>/dev/null)
 
