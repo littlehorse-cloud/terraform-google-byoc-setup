@@ -7,7 +7,7 @@ module "setup_byoc" {
  source  = "littlehorse-cloud/byoc-setup/google"
  version = "$MODULE_VERSION"
 
- project_id = $PROJECT_ID
+ project_id = "$PROJECT_ID"
  repository_name = "$REPOSITORY_NAME"
  organization_name = "$ORGANIZATION_NAME"
  bucket_terraform_state_location = "$BUCKET_TERRAFORM_STATE_LOCATION"
