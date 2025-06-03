@@ -17,6 +17,7 @@ cd "$WORKDIR"
 
 cat > run.sh <<EOF
 #!/bin/bash
+set -e
 
 cat > main.tf <<'INNER_EOF'
 module "setup_byoc" {
