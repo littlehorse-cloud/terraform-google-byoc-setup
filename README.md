@@ -29,14 +29,16 @@ It also setups a workload identity federation to allow connections from the
 configuration repository and configures the bucket for terraform state.
 
 
-## Generate script to install via cloud console shell
+## Install via cloud console shell
+
+The script only needs the repository name as a parameter, the bucket terraform state location is optional.
 
 Run the script
 
 ```sh
-./scripts/create-module-runner.sh <REPOSITORY_NAME> <ORGANIZATION_NAME> <BUCKET_TERRAFORM_STATE_LOCATION>
-```
 
-It will output `tf-byoc-module/run.sh` that can be uploaded to the cloud shell.
+curl -sSL https://raw.githubusercontent.com/littlehorse-cloud/terraform-google-byoc-setup/main/scripts/create-module-runner.sh | bash -s <REPOSITORY_NAME>
+
+```
 
 Once the process ends, share the output with the sales representative.
