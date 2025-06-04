@@ -37,8 +37,10 @@ Run the script
 
 ```sh
 
-curl -sSL https://raw.githubusercontent.com/littlehorse-cloud/terraform-google-byoc-setup/main/scripts/create-module-runner.sh | bash -s <REPOSITORY_NAME>
+curl -sSL https://raw.githubusercontent.com/littlehorse-cloud/terraform-google-byoc-setup/main/scripts/setup.sh | bash -s <REPOSITORY_NAME>
 
 ```
+
+**Note: the repository name assumes the prefix `gcp-byoc-<REPOSITORY_NAME>`**
 
 Once the process ends, share the output with the sales representative.
