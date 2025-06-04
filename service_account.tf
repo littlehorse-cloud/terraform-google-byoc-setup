@@ -21,6 +21,8 @@ locals {
     [
       "artifactregistry.repositories.create",
       "artifactregistry.repositories.delete",
+      "artifactregistry.repositories.list",
+      "artifactregistry.repositories.update",
       "artifactregistry.repositories.get",
       "artifactregistry.repositories.getIamPolicy",
       "artifactregistry.repositories.setIamPolicy",

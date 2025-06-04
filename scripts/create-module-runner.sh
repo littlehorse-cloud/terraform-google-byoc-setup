@@ -22,7 +22,7 @@ module "setup_byoc" {
  version = "$MODULE_VERSION"
 
  project_id = var.project_id
- repository_name = "$REPOSITORY_NAME"
+ repository_name = "gcp-byoc-$REPOSITORY_NAME"
  organization_name = "$ORGANIZATION_NAME"
  bucket_terraform_state_location = "$BUCKET_TERRAFORM_STATE_LOCATION"
 }
