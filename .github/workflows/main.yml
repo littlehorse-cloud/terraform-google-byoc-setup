@@ -22,7 +22,7 @@ jobs:
       id: cliff
       with:
         config: cliff.toml
-        args: --verbose
+        args: --bump --unreleased --verbose 
     
     - name: Create a release
       env:
@@ -31,6 +31,6 @@ jobs:
         gh release create \
           "v${{steps.cliff.outputs.version }}" \
           --title "Release ${{ steps.cliff.outputs.version }}" \
-          --notes "${{ steps.cliff.outputs.changelog }}" \
+          --notes "${{ steps.cliff.outputs.content }}" \
           --target main \
           --latest
