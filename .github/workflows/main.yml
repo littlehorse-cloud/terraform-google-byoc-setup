@@ -31,7 +31,7 @@ jobs:
       run: |
         gh release create \
           "${{steps.cliff.outputs.version }}" \
-          --title "Release ${{ steps.cliff.outputs.version }}" \
+          --title "${{ steps.cliff.outputs.version }}" \
           --notes "${{ steps.cliff.outputs.content }}" \
           --target main \
           --latest
