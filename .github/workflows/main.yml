@@ -29,7 +29,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release create \
-          "v${{steps.cliff.outputs.version }}" \
+          "${{steps.cliff.outputs.version }}" \
           --title "Release ${{ steps.cliff.outputs.version }}" \
           --notes "${{ steps.cliff.outputs.content }}" \
           --target main \
