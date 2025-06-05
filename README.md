@@ -44,3 +44,8 @@ curl -sSL https://raw.githubusercontent.com/littlehorse-cloud/terraform-google-b
 **Note: the repository name assumes the prefix `gcp-byoc-<REPOSITORY_NAME>`**
 
 Once the process ends, share the output with the sales representative.
+
+
+## Releases
+
+The releases of this module are automated with `git-cliff`.
