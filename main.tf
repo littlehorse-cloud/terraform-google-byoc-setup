@@ -31,4 +31,3 @@ resource "google_service_account_iam_member" "github_sa_binding" {
   role               = "roles/iam.workloadIdentityUser"
   member             = "principal://iam.googleapis.com/${google_iam_workload_identity_pool.github_pool.name}/subject/repo:${var.organization_name}/${var.repository_name}:ref:refs/heads/main"
 }
-
