@@ -1,28 +1,7 @@
-# Terraform state
-*.tfstate
-*.tfstate.*
-
-# Crash logs
-crash.log
-
-# Terraform plan output
-*.tfplan
-
-# Sensitive data
-.terraform.tfvars
-*.tfvars
-
-# Terraform directories
-.terraform/
-
-# Override files
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Terragrunt (si lo usas)
-.terragrunt-cache/
-.terraform.lock.hcl # ← opcional si no quieres compartir versiones bloqueadas
-
+# Ignore Terraform files
 tf-byoc-module/
+.terraform
+terraform.tfstate
+*.tfstate*
+terraform.tfvars
+.terraform.lock.hcl

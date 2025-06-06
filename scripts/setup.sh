@@ -11,12 +11,18 @@ BUCKET_TERRAFORM_STATE_LOCATION=${2:-"US"}
 ORGANIZATION_NAME="littlehorse-cloud"
 MODULE_VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/littlehorse-cloud/terraform-google-byoc-setup.git | grep -v '\^{}' | tail -n1 | sed 's/.*\///; s/^v//')"
 
-
 WORKDIR="tf-byoc-module"
+
+# if workdir exists then exit with error
+if [ -d "$WORKDIR" ]; then
+  echo "Error: There is an existing state, if you want to preserve state then run terraform from within ./$WORKDIR folder, otherwise delete the folder and try again."
+  exit 1
+fi
+
 mkdir -p "$WORKDIR"
 cd "$WORKDIR"
 
-cat > main.tf <<EOF
+cat >main.tf <<EOF
 module "setup_byoc" {
  source  = "littlehorse-cloud/byoc-setup/google"
  version = "$MODULE_VERSION"

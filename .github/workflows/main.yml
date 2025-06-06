@@ -22,8 +22,8 @@ jobs:
       id: cliff
       with:
         config: cliff.toml
-        args: --bump --unreleased --verbose 
-    
+        args: --bump --unreleased --verbose
+
     - name: Create a release
       if: steps.cliff.outputs.version != ''
       env:
