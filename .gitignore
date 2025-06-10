@@ -21,8 +21,8 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Terragrunt (si lo usas)
+# Terragrunt (if used)
 .terragrunt-cache/
-.terraform.lock.hcl # ← opcional si no quieres compartir versiones bloqueadas
+.terraform.lock.hcl
 
 tf-byoc-module/
