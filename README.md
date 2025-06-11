@@ -50,6 +50,15 @@ Once the process ends, share the output with the sales representative.
 
 The releases of this module are automated with `git-cliff`.
 
+Conventional commits are used to decide which version will be released
+
+- `fix:` -> increments PATCH.
+- `feat:` -> increments MINOR.
+- `<scope>!:` (breaking changes) -> increments MAJOR.
+- `chore|ci|refactor|style|test|doc"` -> Ignored, won't create a release.
+
+Look at [`cliff.toml`](./cliff.toml) to see a more up to date configuration.
+
 ## How to contribute
 
 ### Requirements
